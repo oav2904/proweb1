@@ -14,7 +14,7 @@ class PgConnection extends DbConnection
 
     public function connect()
     {
-        $this->connection = pg_connect("host=$this->server port=$this->port dbname=$this->database user=$this->user password=$this->password");
+        $this->connection = pg_connect("user=$this->user password=$this->password dbname=$this->database port=$this->port host=$this->server ");
     }
 
     public function disconnect()

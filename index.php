@@ -1,6 +1,8 @@
 <?php
+require_once './shared/header.php';
 require_once './shared/db.php';
 require_once './shared/sessions.php';
+//require_once './shared/guard.php';
 ?>
 <section class="section">
     <div class="container">
@@ -13,7 +15,7 @@ require_once './shared/sessions.php';
         $email = $_POST['email'] ?? '';
         $password = $_POST['password'] ?? '';
         $errors = '';
-        $results = $con->runQuery('SELECT * FROM users WHERE email = $1 and password = md5($2)', [$email, $password]);
+        $results = $con->runQuery('SELECT * FROM users WHERE email = $1 and password = $2', [$email, $password]);
         if ($results) {
             $_SESSION['user_id'] = $results[0]['id'];
             $_SESSION['user_email'] = $results[0]['email'];
