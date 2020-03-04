@@ -47,7 +47,7 @@ require_once './shared/db.php';
             <div class="field">
               <label class="label">First lastname</label>
               <div class="control has-icons-left has-icons-right">
-                <input class="input" type="text" placeholder="Text input" value="">
+                <input class="input" type="text" required placeholder="Text input" value="">
                 <span class="icon is-small is-left">
                   <i class="fas fa-user"></i>
                 </span>
@@ -79,7 +79,8 @@ require_once './shared/db.php';
                 <div class="field">
               <label class="label">Birthday</label>
               <div class="control has-icons-left has-icons-right">
-                <input class="input" type="date"  value="">
+                <input class="input" type="date"  value=""
+                >
                 <span class="icon is-small is-left">
                   <i class="fas fa-user"></i>
                 </span>
@@ -138,12 +139,6 @@ require_once './shared/db.php';
                 </span>
               </label>
             </div>
-            <div class="field">
-              <label class="label">About me</label>
-              <div class="control">
-                <textarea class="textarea has-fixed-size" required></textarea>
-              </div>
-            </div>
             <div class="field is-grouped">
               <div class="control">
                 <button class="button is-link">Submit</button>
@@ -153,7 +148,6 @@ require_once './shared/db.php';
               </div>
             </div>
            
-
             <script>
               const fileInput = document.querySelector('#file-js-example input[type=file]');
               fileInput.onchange = () => {
