@@ -1,6 +1,8 @@
 <?php
 require_once './shared/header.php';
 require_once './shared/db.php';
+require './shared/validarfoto.php';
+require_once './shared/guard.php';
 ?>
 <section class="section">
     <div class="container">
@@ -10,22 +12,36 @@ require_once './shared/db.php';
 
 <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $p_name = $_POST['p_nombre'] ?? '';
+        $s_name = $_POST['s_nombre'] ?? ''; 
+        $f_lastname = $_POST['p_apellido'] ?? '';
+        $s_lastname = $_POST['s_apellido'] ?? '';
         $email = $_POST['email'] ?? '';
+        $repassword = $_POST['email'] ?? '';
         $password = $_POST['password'] ?? '';
+        $birthday = $_POST['birthday'] ?? ''; 
+        $img = $_POST['image'] ?? '';
+        $about = $_POST['about'] ?? '';
+        $position = $_POST['position'] ?? '';
+        $location = $_POST['location'] ?? '';
         $errors = '';
-
-        $sql = "INSERT INTO users(email, password) VALUES ($1, md5($2))";
-        $con->runStatement($sql, [$email, $password]);
+        if( $password == $repassword){
+        $results = $user_model->create($p_name,$s_name, $f_lastname, $s_lastname, $email,$password, $birthday, $img, $about, $position,$location);
         header('Location: /page_1.php');
         exit();
     }
+    else{
+
+        $errors = 'No concuerdan las contraseñas'
+    }
+}
  ?>
         <form method="POST" enctype="multipart/form-data">
 
             <div class="field">
               <label class="label">Name</label>
               <div class="control has-icons-left has-icons-right">
-                <input class="input" type="text" placeholder="Text input" value="">
+                <input class="input" name= "p_nombre" type="text" required placeholder="Text input" value="">
                 <span class="icon is-small is-left">
                   <i class="fas fa-user"></i>
                 </span>
@@ -36,7 +52,7 @@ require_once './shared/db.php';
             <div class="field">
               <label class="label">Middlename</label>
               <div class="control has-icons-left has-icons-right">
-                <input class="input" type="text" placeholder="Text input" value="">
+                <input class="input" type="text" placeholder="Text input" value="" name = "s_nombre">
                 <span class="icon is-small is-left">
                   <i class="fas fa-user"></i>
                 </span>
@@ -47,7 +63,7 @@ require_once './shared/db.php';
             <div class="field">
               <label class="label">First lastname</label>
               <div class="control has-icons-left has-icons-right">
-                <input class="input" type="text" required placeholder="Text input" value="">
+                <input class="input" type="text" required placeholder="Text input" value="" name = "p_apellido">
                 <span class="icon is-small is-left">
                   <i class="fas fa-user"></i>
                 </span>
@@ -58,18 +74,27 @@ require_once './shared/db.php';
             <div class="field">
               <label class="label">Second lastname</label>
               <div class="control has-icons-left has-icons-right">
-                <input class="input" type="text" placeholder="Text input" value="">
+                <input class="input" type="text" placeholder="Text input" value="" name = "s_apellido">
                 <span class="icon is-small is-left">
                   <i class="fas fa-user"></i>
                 </span>
                 <span class="icon is-small is-right">
                   <i class="fas fa-check"></i>
                 </span>   
-
             <div class="field">
+              <label class="label">Email</label>
+              <div class="control has-icons-left has-icons-right">
+                <input class="input" type="email" required placeholder="Email input" value="" name = "mail">
+                <span class="icon is-small is-left">
+                  <i class="fas fa-envelope"></i>
+                </span>
+                <span class="icon is-small is-right">
+                  <i class="fas fa-exclamation-triangle"></i>
+                </span>
+                <div class="field">
               <label class="label">Position</label>
               <div class="control has-icons-left has-icons-right">
-                <input class="input" type="text" placeholder="Text input" value="">
+                <input class="input" type="text" required placeholder="Text input" value="" name = "position">
                 <span class="icon is-small is-left">
                   <i class="fas fa-user"></i>
                 </span>
@@ -77,31 +102,33 @@ require_once './shared/db.php';
                   <i class="fas fa-check"></i>
                 </span>  
                 <div class="field">
-              <label class="label">Birthday</label>
+              <label class="label">Location</label>
               <div class="control has-icons-left has-icons-right">
-                <input class="input" type="date"  value=""
-                >
+                <input class="input" name= "location" type="text" required placeholder="Text input" value="">
                 <span class="icon is-small is-left">
                   <i class="fas fa-user"></i>
                 </span>
                 <span class="icon is-small is-right">
                   <i class="fas fa-check"></i>
-                </span>    
-
-            <div class="field">
-              <label class="label">Email</label>
+                </span>
+                <div class="field">
+              <label class="label">Birthday</label>
               <div class="control has-icons-left has-icons-right">
-                <input class="input" type="email" placeholder="Email input" value="">
+                <input class="input" type="date" required value=""
+                name = "birthday">
                 <span class="icon is-small is-left">
-                  <i class="fas fa-envelope"></i>
+                  <i class="fas fa-user"></i>
                 </span>
                 <span class="icon is-small is-right">
-                  <i class="fas fa-exclamation-triangle"></i>
-                </span>
+                  <i class="fas fa-check"></i>
+                </span>   
+                <div class="control">
+                  <textarea class="textarea has-fixed-size" name = "about"placeholder="About me"></textarea>
+                </div>
            <div class="field">
                 <label class="label">Password</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input" name="password" type="password" placeholder="Email input" value="">
+                    <input class="input" name="password" required type="password" placeholder="Email input" value="" name = "p_contra">
                     <span class="icon is-small is-left">
                         <i class="fas fa-lock"></i>
                     </span>
@@ -113,7 +140,7 @@ require_once './shared/db.php';
             <div class="field">
                 <label class="label">Re~Password</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input" name="repassword" type="password" placeholder="Email input" value="">
+                    <input class="input" required name="repassword" type="password" placeholder="Email input" value="" name = "s_contra">
                     <span class="icon is-small is-left">
                         <i class="fas fa-lock"></i>
                     </span>
@@ -125,7 +152,7 @@ require_once './shared/db.php';
 
             <div id="file-js-example" class="file has-name">
                 <label class="file-label">
-                    <input class="file-input" type="file" name="resume" accept="image/png, .jpeg, .jpg " autofocus >
+                    <input class="file-input" required type="file" name="image" accept="image/png, .jpeg, .jpg " autofocus >
                 <span class="file-cta">
                 <span class="file-icon">
                     <i class="fas fa-upload"></i>
@@ -147,7 +174,20 @@ require_once './shared/db.php';
                 <button class="button is-link is-light">Cancel</button>
               </div>
             </div>
-           
+            <p class="help is-danger"><?= $errors ?? '' ?></p>
+           <?php 
+           if ($_POST) {
+               extract($_POST, EXTR_OVERWRITE);
+               if (!file_exists("fotos")) {
+                   mkdir("fotos",07777 );
+               }
+                $nombre = strtolower($nombre);
+                if (validarfoto($nombre)) {
+                   echo "<img src = '$rutaSubida'>";
+                }
+           }
+            ?>
+            <img src="">
             <script>
               const fileInput = document.querySelector('#file-js-example input[type=file]');
               fileInput.onchange = () => {

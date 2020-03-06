@@ -2,7 +2,7 @@
 require_once './shared/header.php';
 require_once './shared/db.php';
 require_once './shared/sessions.php';
-//require_once './shared/guard.php';
+
 ?>
 <section class="section">
     <div class="container">
@@ -15,7 +15,7 @@ require_once './shared/sessions.php';
         $email = $_POST['email'] ?? '';
         $password = $_POST['password'] ?? '';
         $errors = '';
-        $results = $con->runQuery('SELECT * FROM users WHERE email = $1 and password = $2', [$email, $password]);
+        $results = $user_model->login($email, $password);
         if ($results) {
             $_SESSION['user_id'] = $results[0]['id'];
             $_SESSION['user_email'] = $results[0]['email'];
@@ -28,9 +28,6 @@ require_once './shared/sessions.php';
  ?>
 
         <form method="POST" action="/">
-
-            <p class="help is-danger"><?= $errors ?? '' ?></p>
-
             <div class="field">
                 <label class="label">Email</label>
                 <div class="control has-icons-left has-icons-right">
@@ -43,7 +40,6 @@ require_once './shared/sessions.php';
                     </span>
                 </div>
             </div>
-
             <div class="field">
                 <label class="label">Password</label>
                 <div class="control has-icons-left has-icons-right">
@@ -56,6 +52,8 @@ require_once './shared/sessions.php';
                     </span>
                 </div>
             </div>
+
+            <p class="help is-danger"><?= $errors ?? '' ?></p>
 
             <div class="field is-grouped">
                 <div class="control">

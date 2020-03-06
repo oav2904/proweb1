@@ -6,9 +6,10 @@ create table users (
 	s_name text default ' ',
 	f_lastname text not null,
 	s_lastname text default ' ',
+	email text not null,
 	password text not null,
 	birthday date not null,
-	img bytea not null,
+	img bytea ,
 	about text not null,
 	position text not null,
 	location text not null 

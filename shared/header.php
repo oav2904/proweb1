@@ -1,5 +1,5 @@
 <?php
-require_once './shared/sessions.php';
+require_once __DIR__ . '/sessions.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,25 +42,27 @@ $menu = [
   ]],
 ];
 
-foreach ($menu as $link) {
-  if (array_key_exists('sub_menus', $link)) {
-    ?>
-    <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          <?= $link['name'] ?>
-        </a>
+if (isset($_SESSION['user_id']) || !empty($_SESSION['user_id'])) {
+  foreach ($menu as $link) {
+    if (array_key_exists('sub_menus', $link)) {
+      ?>
+      <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <?= $link['name'] ?>
+          </a>
 
-        <div class="navbar-dropdown">
-          <?php
-            foreach ($link['sub_menus'] as $sub_menu) {
-              echo "<a class='navbar-item' href='" . $sub_menu['url'] . "'>" . $sub_menu['name'] . "</a>";
-            }
-           ?>
+          <div class="navbar-dropdown">
+            <?php
+              foreach ($link['sub_menus'] as $sub_menu) {
+                echo "<a class='navbar-item' href='" . $sub_menu['url'] . "'>" . $sub_menu['name'] . "</a>";
+              }
+             ?>
+          </div>
         </div>
-      </div>
-    <?php
-  } else {
-    echo "<a class='navbar-item' href='" . $link['url'] . "'>" . $link['name'] . "</a>";
+      <?php
+    } else {
+      echo "<a class='navbar-item' href='" . $link['url'] . "'>" . $link['name'] . "</a>";
+    }
   }
 }
 ?>
