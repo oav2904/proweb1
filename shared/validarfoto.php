@@ -8,7 +8,8 @@ function validarFoto($nombre){
     if (!file_exists($dirSubida)) {
         mkdir($dirSubida, 07777);
     }
-    $foto = $_FILES['foto'];
+    $foto = $_FILES['image'];
+    var_dump($foto);
     $nomFoto = $foto['name'];
     $nomTemp = $foto['tmp_name'];
     $rutaSubida = "[$dirSubida]profile.jpg";
@@ -16,7 +17,6 @@ function validarFoto($nombre){
 
     if ($extArchivo == 'jpeg' || $extArchivo == 'png' || $extArchivo == 'jpg' ) {
         if (move_uploaded_file($nomTemp, $rutaSubida)) {
-        
          return true;               
         }
     	else {

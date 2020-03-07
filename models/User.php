@@ -22,8 +22,8 @@ class User
     public function create($p_name,$s_name, $f_lastname, $s_lastname, $email,$password, $birthday, $img, $about, $position,$location)
     {
         $this->connection->runStatement('INSERT INTO users(
-    f_name, s_name, f_lastname,s_lastname, password, birthday, img, about, position, location)
-    VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)', [$p_name,$s_name, $f_lastname, $s_lastname, $email, $password, $birthday, $img, $about, $position,$location]);
+    f_name, s_name, f_lastname,s_lastname,email, password, birthday, img, about, position, location)
+    VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10, $11)', [$p_name,$s_name, $f_lastname, $s_lastname, $email, $password, $birthday, $img, $about, $position,$location]);
     }
 
     public function read()

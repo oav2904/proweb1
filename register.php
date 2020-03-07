@@ -2,7 +2,7 @@
 require_once './shared/header.php';
 require_once './shared/db.php';
 require './shared/validarfoto.php';
-require_once './shared/guard.php';
+// require_once './shared/guard.php';
 ?>
 <section class="section">
     <div class="container">
@@ -16,9 +16,9 @@ require_once './shared/guard.php';
         $s_name = $_POST['s_nombre'] ?? ''; 
         $f_lastname = $_POST['p_apellido'] ?? '';
         $s_lastname = $_POST['s_apellido'] ?? '';
-        $email = $_POST['email'] ?? '';
-        $repassword = $_POST['email'] ?? '';
-        $password = $_POST['password'] ?? '';
+        $email = $_POST['mail'] ?? '';
+        $repassword = $_POST['s_contra'] ?? '';
+        $password = $_POST['p_contra'] ?? '';
         $birthday = $_POST['birthday'] ?? ''; 
         $img = $_POST['image'] ?? '';
         $about = $_POST['about'] ?? '';
@@ -32,7 +32,7 @@ require_once './shared/guard.php';
     }
     else{
 
-        $errors = 'No concuerdan las contraseñas'
+        $errors = 'No concuerdan las contraseñas';
     }
 }
  ?>
@@ -128,7 +128,7 @@ require_once './shared/guard.php';
            <div class="field">
                 <label class="label">Password</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input" name="password" required type="password" placeholder="Email input" value="" name = "p_contra">
+                    <input class="input" required type="password" placeholder="Email input" value="" name = "p_contra">
                     <span class="icon is-small is-left">
                         <i class="fas fa-lock"></i>
                     </span>
@@ -140,7 +140,7 @@ require_once './shared/guard.php';
             <div class="field">
                 <label class="label">Re~Password</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input" required name="repassword" type="password" placeholder="Email input" value="" name = "s_contra">
+                    <input class="input" required type="password" placeholder="Email input" value="" name = "s_contra">
                     <span class="icon is-small is-left">
                         <i class="fas fa-lock"></i>
                     </span>
@@ -181,8 +181,8 @@ require_once './shared/guard.php';
                if (!file_exists("fotos")) {
                    mkdir("fotos",07777 );
                }
-                $nombre = strtolower($nombre);
-                if (validarfoto($nombre)) {
+                $p_name = strtolower($p_name);
+                if (validarfoto($p_name)) {
                    echo "<img src = '$rutaSubida'>";
                 }
            }
