@@ -2,7 +2,6 @@
 require_once './shared/header.php';
 require_once './shared/db.php';
 require './shared/validarfoto.php';
-// require_once './shared/guard.php';
 ?>
 <section class="section">
     <div class="container">
