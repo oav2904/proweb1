@@ -30,7 +30,7 @@ create table experience(
 	id serial primary key,
 	company text not null,
 	position text not null,
-	description text not null
+	description text not null,
 	timeperiod text not null,
 	id_user int not null,
 	FOREIGN KEY (id_user) REFERENCES users (id),
@@ -44,7 +44,7 @@ create table projects (
 	name text not null,
 	platform text not null,
 	description text not null,
-	url default '',
+	url text default '',
 	id_user int not null,
 	FOREIGN KEY (id_user) REFERENCES users (id),
 	unique (name, id_user)
@@ -57,7 +57,7 @@ create table education (
 	degree text not null,
 	timeperiod text not null,
 	description text not null,
-	website default '',
+	website text default '',
 	id_user int not null,
 	FOREIGN KEY (id_user) REFERENCES users (id),
 	unique (degree, id_user)
@@ -84,7 +84,7 @@ create table contributions (
 	id serial primary key,
 	name text not null,
 	description text not null,
-	url default '',
+	url text default '',
 	id_user int not null,
 	FOREIGN KEY (id_user) REFERENCES users (id),
 	unique (name, id_user)
