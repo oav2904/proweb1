@@ -5,15 +5,15 @@ require_once __DIR__ . '/sessions.php';
 <html>
 <head>
 	<title><?= $title ?? 'Page' ?></title>
-	<link rel="stylesheet" type="text/css" href="./css/bulma.min.css">
-	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/bulma.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="/">
-      <img src="./imgs/logo.png" >
+      <img src="../imgs/logo.png" >
     </a>
 
     <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -28,17 +28,15 @@ require_once __DIR__ . '/sessions.php';
 
 <?php
 $menu = [
-  ['name' => 'Page 1', 'url' => '/page_1.php'],
-  ['name' => 'Page 2', 'url' => '/page_2.php'],
+  ['name' => 'Experience', 'url' => './experience/index.php'],
+  ['name' => 'Education', 'url' => './education/index.php'],
   ['name' => 'More', 'url' => '', 'sub_menus' => [
-    ['name' => 'Page 3', 'url' => '/page_3.php'],
-    ['name' => 'Page 4', 'url' => '/page_4.php'],
-    ['name' => 'Page 5', 'url' => '/page_5.php'],
-  ]],
-  ['name' => 'Options', 'url' => '', 'sub_menus' => [
-    ['name' => 'Page 3', 'url' => '/page_3.php'],
-    ['name' => 'Page 4', 'url' => '/page_4.php'],
-    ['name' => 'Page 5', 'url' => '/page_5.php'],
+    ['name' => 'Skills', 'url' => './skills/index.php'],
+    ['name' => 'Projects', 'url' => './project/index.php'],
+    ['name' => 'Knowleadge', 'url' => './knowleadge/index.php'],
+    ['name' => 'Hobbies', 'url' => './hobbie/index.php'],
+    ['name' => 'Contributions', 'url' => './contribution/index.php'],
+
   ]],
 ];
 
@@ -72,7 +70,7 @@ if (isset($_SESSION['user_id']) || !empty($_SESSION['user_id'])) {
         <div class="buttons">
           <?php if (isset($_SESSION['user_id'])) { ?>
             <h3><?= $_SESSION['user_email'] ?></h3>
-            <a class="button is-light" href="/logout.php">
+            <a class="button is-danger" href="/logout.php">
               Log out
             </a>
           <?php } else { ?>

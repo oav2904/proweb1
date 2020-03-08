@@ -1,6 +1,6 @@
 <?php 
 
-class Knowleadge
+class Knowleadge {
     private $connection;
     function __construct($connection)
     {
@@ -16,7 +16,7 @@ class Knowleadge
     {
         $this->connection->runStatement('INSERT INTO knowdleage(
     name, id_user)
-    VALUES ($1, $2,'), [$name, $id_user]);
+    VALUES ($1, $2,', [$name, $id_user]);
     }
     
     public function read($id_user)

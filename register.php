@@ -1,7 +1,7 @@
 <?php
 require_once './shared/header.php';
 require_once './shared/db.php';
-require './shared/validarfoto.php';
+require_once './shared/validarfoto.php';
 ?>
 <section class="section">
     <div class="container">
@@ -186,7 +186,6 @@ require './shared/validarfoto.php';
                 }
            }
             ?>
-            <img src="">
             <script>
               const fileInput = document.querySelector('#file-js-example input[type=file]');
               fileInput.onchange = () => {

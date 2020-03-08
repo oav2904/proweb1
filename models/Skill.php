@@ -10,19 +10,19 @@ class Skill
 
      public function find($id)
     {
-        return $this->connection->runQuery('SELECT * FROM skills WHERE id = $1', [$id]);
+        return $this->connection->runQuery('SELECT id, name, value, id_user FROM skills WHERE id = $1', [$id]);
     }
 
     public function create($name, $value, $id_user)
     {
         $this->connection->runStatement('INSERT INTO skills(
 	name, value, id_user)
-	VALUES ($1, $2, $3)'), [$name, $value, $id_user]);
+	VALUES ($1, $2, $3)', [$name, $value, $id_user]);
     }
 
     public function read($id_user)
     {
-        return $this->connection->runQuery('SELECT * FROM skills WHERE $id_user = $1', [$id_user] );
+        return $this->connection->runQuery('SELECT id, name, value, id_user FROM skills WHERE $id_user = $1', [$id_user] );
     }
 
     public function update($id, $name, $value, $id_user)
@@ -38,10 +38,4 @@ class Skill
     WHERE id=$1', [$id]);
     }
 }
-
-
-
-
-
-
  ?>

@@ -1,6 +1,5 @@
 <?php
 
-
 class User
 {
     private $connection;
@@ -11,12 +10,12 @@ class User
 
     public function login($email, $password)
     {
-        return $this->connection->runQuery('SELECT * FROM users WHERE email = $1 and password = $2', [$email, $password]);
+        return $this->connection->runQuery('SELECT id, f_name, s_name, f_lastname, s_lastname, email, password, birthday, img, about, position, location FROM users WHERE email = $1 and password = $2', [$email, $password]);
     }
 
      public function find($id)
     {
-        return $this->connection->runQuery('SELECT * FROM users WHERE id = $1', [$id]);
+        return $this->connection->runQuery('SELECT id, f_name, s_name, f_lastname, s_lastname, email, password, birthday, img, about, position, location FROM users WHERE id = $1', [$id]);
     }
 
     public function create($p_name,$s_name, $f_lastname, $s_lastname, $email,$password, $birthday, $img, $about, $position,$location)

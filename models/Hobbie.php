@@ -1,6 +1,6 @@
 <?php 
 
-class Hobbie
+class Hobbie{
     private $connection;
     function __construct($connection)
     {
@@ -16,7 +16,7 @@ class Hobbie
     {
         $this->connection->runStatement('INSERT INTO hobbie(
     name, id_user)
-    VALUES ($1, $2,'), [$name, $id_user]);
+    VALUES ($1, $2,', [$name, $id_user]);
     }
     
     public function read($id_user)

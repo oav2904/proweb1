@@ -1,6 +1,6 @@
 <?php 
 
-class Skill
+class Contribution
 {
     private $connection;
     function __construct($connection)
@@ -16,7 +16,7 @@ class Skill
     {
         $this->connection->runStatement('INSERT INTO contributions(
     name, description, url, id_user)
-    VALUES ($1, $2, $3, $4, $5)'), [$name, $description, $url, $id_user]);
+    VALUES ($1, $2, $3, $4, $5)', [$name, $description, $url, $id_user]);
     }
     public function read($id_user)
     {

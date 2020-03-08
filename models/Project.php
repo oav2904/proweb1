@@ -17,7 +17,7 @@ class Project
     {
         $this->connection->runStatement('INSERT INTO projects(
     name, platform, description, url, id_user)
-    VALUES ($1, $2, $3,$4,$5)'), [$name, $platform, $description, $url, $id_user]);
+    VALUES ($1, $2, $3,$4,$5)', [$name, $platform, $description, $url, $id_user]);
     }
 
     public function read($id_user)

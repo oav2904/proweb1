@@ -17,7 +17,7 @@ class Education
     {
         $this->connection->runStatement('INSERT INTO education (
     degree, timeperiod, description, website, id_user)
-    VALUES ($1, $2, $3, $4, $5)'), [$egree, $timeperiod, $description, $website, $id_user]);
+    VALUES ($1, $2, $3, $4, $5)', [$egree, $timeperiod, $description, $website, $id_user]);
     }
 
     public function read($id_user)
