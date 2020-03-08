@@ -10,8 +10,6 @@ require_once __DIR__ . '/../models/Experience.php';
 require_once __DIR__ . '/../models/Education.php';
 require_once __DIR__ . '/../models/Contribution.php';
 
-
-
 use crojasaragonez\UtnDb\PgConnection;
 
 $con = new PgConnection('postgres', '29041999ariasv', 'isw', 5432, 'localhost');

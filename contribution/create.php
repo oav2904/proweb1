@@ -1,13 +1,16 @@
 <?php
 require_once '../shared/header.php';
 require_once '../shared/db.php';
+require_once '../shared/guard.php';
 
-$name = $_POST['name'] ?? '';
-
+$company= $_POST['company'] ?? '';
+$position= $_POST['position'] ?? '';
+$description= $_POST['description'] ?? '';
+$timeperiod= $_POST['timeperiod'] ?? '';
+$id_user= $_SESSION['user_id'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $animal_model->create($name);
-    return header("Location: /animals");
+    $experience_model->create($company, $position, $description, $timeperiod, $id_user);
+    return header("Location: /experience");
 }
-
 require_once './form.php';
  ?>
