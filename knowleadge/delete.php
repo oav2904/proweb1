@@ -5,8 +5,8 @@ require_once '../shared/db.php';
 $id = $_GET['id'] ?? '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $experience_model->delete($id);
-    return header("Location: /experience");
+    $knownleadge_model->delete($id);
+    return header("Location: /knownleadge");
 }
 
 ?>
@@ -15,6 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <h1>¿Esta seguro?</h1>
     <form method="POST">
         <button>Accept</button>
-        <a href="/experience">Cancel</a>
+        <a href="/knownleadge">Cancel</a>
     </form>
 </div>

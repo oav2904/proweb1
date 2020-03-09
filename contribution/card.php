@@ -2,17 +2,15 @@
   <div class="card-content">
     <div class="media">
       <div class="media-content">
-        <p class="title is-4"><?= $experience['company'] ?></p>
-        <p class="title is-4"><?= $experience['position'] ?></p>
+        <p class="title is-4"><?= $contribution['name'] ?></p>
         <p class="title is-4"><?= $experience['description'] ?></p>
-        <p class="title is-4"><?= $experience['timeperiod'] ?></p>
-
+        <p class="title is-4"><?= $experience['url'] ?></p>
       </div>
     </div>
 
     <div class="content">
-        <a class="button is-link" href="/experience/update.php?id=<?=$experience['id']?>">Edit</a>
-        <a class="button is-danger" href="/experience/delete.php?id=<?=$experience['id']?>">Delete</a>
+        <a class="button is-link" href="/contribution/update.php?id=<?=$contribution['id']?>">Edit</a>
+        <a class="button is-danger" href="/contribution/delete.php?id=<?=$contribution['id']?>">Delete</a>
     </div>
   </div>
 </div>

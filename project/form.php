@@ -1,34 +1,34 @@
 <section class="section">
     <div class="container">
     	<h1 class="title">
-            Experience
+            Projects
         </h1>
 <form method="POST">
 	<div class="field">
-    	<label>Company name</label>
+    	<label>Name</label>
 	<div class="control">
-    	<input type="text" name="company" value="<?= $experience['company'] ?? '' ?>">
+    	<input type="text" required  name="name" value="<?= $project['name'] ?? '' ?>">
 	</div>
 	</div>
 
 	<div class="field">
-    	<label>Position</label>
+    	<label>Platform</label>
 	<div class="control">
-    	<input type="text" name="position" value="<?= $experience['position'] ?? '' ?>">
+    	<input type="text" required name="platform" value="<?= $project['platform'] ?? '' ?>">
 	</div>
 	</div>
 
 	<div class="field">
     	<label>Description</label>
 	<div class="control">
-    	<input type="text" name="description" value="<?= $experience['description'] ?? '' ?>">
+    	<input type="text" required name="description" value="<?= $project['description'] ?? '' ?>">
 	</div>
 	</div>
 
 	<div class="field">
-    	<label>Time Period</label>
+    	<label>Url</label>
 	<div class="control">
-    	<input type="text" name="timeperiod" value="<?= $experience['timeperiod'] ?? '' ?>">
+    	<input type="text" name="url" value="<?= $project['url'] ?? '' ?>">
     </div>
 	</div>
 	<div class="field is-grouped">

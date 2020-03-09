@@ -7,14 +7,14 @@ require_once '../shared/guard.php';
 <div class="container">
 
 <div class="container">
-    <h1>Experiences</h1>
-    <a class="button is-success" href="/experience/create.php">New Experience</a>
+    <h1>Project</h1>
+    <a class="button is-success" href="/project/create.php">New project</a>
 </div>
 <div class="columns is-multiline">
     <?php
-     $experience = $experience_model->read($_SESSION['user_id']);
-    if  ($experience) {
-        foreach  ($experience as $experiences) {
+     $project = $project_model->read($_SESSION['user_id']);
+    if  ($project) {
+        foreach  ($project as $projects) {
             require './card.php';
         }
     }

@@ -8,13 +8,13 @@ require_once '../shared/guard.php';
 
 <div class="container">
     <h1>Experiences</h1>
-    <a class="button is-success" href="/experience/create.php">New Experience</a>
+    <a class="button is-success" href="/education/create.php">New education</a>
 </div>
 <div class="columns is-multiline">
     <?php
-     $experience = $experience_model->read($_SESSION['user_id']);
-    if  ($experience) {
-        foreach  ($experience as $experiences) {
+     $education = $education_model->read($_SESSION['user_id']);
+    if  ($education) {
+        foreach  ($education as $educations) {
             require './card.php';
         }
     }

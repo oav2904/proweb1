@@ -5,18 +5,17 @@ require_once '../shared/guard.php';
 
 
 $id = $_GET['id'] ?? '';
-$animal = $experience_model->find($id)[0];
+$contribution = $contribution_model->find($id)[0];
 $id_us = $_SESSION['user_id'];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $company = $_POST['company'] ?? '';
-    $position = $_POST['position'] ?? '';
+    $name = $_POST['name'] ?? '';
     $description = $_POST['description'] ?? '';
-    $timeperiod = $_POST['timeperiod'] ?? '';
+    $url = $_POST['url'] ?? '';
     $id_us = $_SESSION['user_id'];
 
     $experience_model->update($id, $company, $position, $description, $timeperiod, $id_user);
-    return header("Location: /experience");
+    return header("Location: /contribution");
 }
 
 require_once './form.php';

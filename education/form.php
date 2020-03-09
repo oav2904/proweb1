@@ -5,31 +5,31 @@
         </h1>
 <form method="POST">
 	<div class="field">
-    	<label>Company name</label>
+    	<label>Degree</label>
 	<div class="control">
-    	<input type="text" name="company" value="<?= $experience['company'] ?? '' ?>">
-	</div>
-	</div>
-
-	<div class="field">
-    	<label>Position</label>
-	<div class="control">
-    	<input type="text" name="position" value="<?= $experience['position'] ?? '' ?>">
+    	<input type="text" required name="degree" value="<?= $education['degree'] ?? '' ?>">
 	</div>
 	</div>
 
 	<div class="field">
     	<label>Description</label>
 	<div class="control">
-    	<input type="text" name="description" value="<?= $experience['description'] ?? '' ?>">
+    	<input type="text" required name="description" value="<?= $education['description'] ?? '' ?>">
 	</div>
 	</div>
 
 	<div class="field">
     	<label>Time Period</label>
 	<div class="control">
-    	<input type="text" name="timeperiod" value="<?= $experience['timeperiod'] ?? '' ?>">
+    	<input type="text" required name="timeperiod" value="<?= $education['timeperiod'] ?? '' ?>">
     </div>
+	</div>
+
+	<div class="field">
+    	<label>Website</label>
+	<div class="control">
+    	<input type="text"  name="website" value="<?= $education['website'] ?? '' ?>">
+	</div>
 	</div>
 	<div class="field is-grouped">
     <div class="control">
