@@ -5,10 +5,10 @@ require_once './shared/guard.php';
 <section class="section">
     <div class="container">
       <h1 class="title">
-        Page 1
+        CV 
       </h1>
       <p class="subtitle">
-        Page 1 content
+        CV Disponibles
       </p>
     </div>
 </section>

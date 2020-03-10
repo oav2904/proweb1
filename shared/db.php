@@ -12,7 +12,7 @@ require_once __DIR__ . '/../models/Contribution.php';
 
 use crojasaragonez\UtnDb\PgConnection;
 
-$con = new PgConnection('postgres', '29041999ariasv', 'isw', 5432, 'localhost');
+$con = new PgConnection('postgres', '29041999ariasv', 'ISW', 5432, 'localhost');
 $con->connect();
 
 $user_model = new User($con);

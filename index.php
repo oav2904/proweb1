@@ -19,6 +19,12 @@ require_once './shared/sessions.php';
         if ($results) {
             $_SESSION['user_id'] = $results[0]['id'];
             $_SESSION['user_email'] = $results[0]['email'];
+            $_SESSION['user_img'] = $results[0]['img'];
+            $_SESSION['user_f_name'] = $results[0]['f_name'];
+            $_SESSION['user_s_name'] = $results[0]['s_name'];
+            $_SESSION['user_f_lastname'] = $results[0]['f_lastname'];
+            $_SESSION['user_s_lastname'] = $results[0]['s_lastname'];
+
             header('Location: /page_1.php');
             exit();
         } elseif ($email != '' || $password != '') {
@@ -43,7 +49,7 @@ require_once './shared/sessions.php';
             <div class="field">
                 <label class="label">Password</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input" name="password" type="password" placeholder="Email input" value="">
+                    <input class="input" name="password" type="password" placeholder="Password input" value="">
                     <span class="icon is-small is-left">
                         <i class="fas fa-lock"></i>
                     </span>
